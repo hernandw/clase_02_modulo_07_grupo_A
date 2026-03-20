@@ -20,3 +20,8 @@ export const deleteById = async (id) => {
   );
   return rows[0];
 };
+
+export const findById = async(id)=>{
+  const { rows } = await pool.query("SELECT * FROM viajes WHERE id = $1 returning *", [id])
+  return rows
+}

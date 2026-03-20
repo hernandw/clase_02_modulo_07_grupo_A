@@ -12,6 +12,7 @@ app.use(express.json())
 
 //Rutas
 app.use('/', viajesRouter)
+app.use/'/'
 
 
 app.listen(PORT, () => {

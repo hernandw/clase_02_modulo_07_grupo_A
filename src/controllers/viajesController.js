@@ -1,4 +1,4 @@
-import { findAll, create, deleteById } from "../models/viajesModel.js";
+import { findAll, create, deleteById, findById } from "../models/viajesModel.js";
 
 const getViajes = async (req, res) => {
   try {
@@ -31,6 +31,17 @@ const deleteViaje = async(req, res)=>{
         console.error(error);
     res.status(500).json({ error: "Error al eliminar viaje" });
     }
+}
+
+const getViajeById = asyc(req, res)=>{
+  try {
+    const id = req.params.id
+  const viaje = await findById(id)
+  res.json(viaje)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener viaje" });
+  }
 }
 
 export { getViajes, createViaje, deleteViaje };
