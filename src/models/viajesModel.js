@@ -12,3 +12,11 @@ export const create = async (destino, presupuesto, descripcion) => {
   const { rows } = await pool.query(query, values);
   return rows[0];
 };
+
+export const deleteById = async (id) => {
+  const { rows } = await pool.query(
+    "DELETE FROM viajes WHERE id = $1 returning *",
+    [id],
+  );
+  return rows[0];
+};

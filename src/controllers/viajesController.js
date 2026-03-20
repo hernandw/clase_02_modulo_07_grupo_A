@@ -1,4 +1,4 @@
-import { findAll, create } from "../models/viajesModel.js";
+import { findAll, create, deleteById } from "../models/viajesModel.js";
 
 const getViajes = async (req, res) => {
   try {
@@ -22,4 +22,15 @@ const createViaje = async (req, res) => {
   }
 };
 
-export { getViajes, createViaje };
+const deleteViaje = async(req, res)=>{
+    try {
+        
+       const viajeEliminado =   await deleteById(req.params.id)
+        res.json(viajeEliminado)
+    } catch (error) {
+        console.error(error);
+    res.status(500).json({ error: "Error al eliminar viaje" });
+    }
+}
+
+export { getViajes, createViaje, deleteViaje };
